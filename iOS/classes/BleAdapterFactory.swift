@@ -8,7 +8,7 @@ public typealias BleAdapterCreator = (_ queue: DispatchQueue, _ restoreIdentifie
 public class BleAdapterFactory: NSObject {
 
     private static var bleAdapterCreator: BleAdapterCreator = { (queue, restoreIdentifierKey) in
-        return BleClientManager(queue: queue, restoreIdentifierKey: restoreIdentifierKey)
+        return BleClientManagerFork(queue: queue, restoreIdentifierKey: restoreIdentifierKey)
     }
 
     @objc

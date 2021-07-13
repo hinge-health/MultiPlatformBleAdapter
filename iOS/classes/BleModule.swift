@@ -8,16 +8,16 @@ import Foundation
 import CoreBluetooth
 
 @objc
-public protocol BleClientManagerDelegate {
+public protocol BleClientManagerForkDelegate {
     func dispatchEvent(_ name: String, value: Any)
 }
 
 @objc
-public class BleClientManager : NSObject {
+public class BleClientManagerFork : NSObject {
 
     // Delegate is used to send events to
     @objc
-    public var delegate: BleClientManagerDelegate?
+    public var delegate: BleClientManagerForkDelegate?
 
     // RxBlutoothKit's manager
     private let manager : BluetoothManager
@@ -117,7 +117,7 @@ public class BleClientManager : NSObject {
     }
 
     deinit {
-        // We don't use deinit to deinitialize BleClientManager. User
+        // We don't use deinit to deinitialize BleClientManagerFork. User
         // should call invalidate() before destruction of this object.
         // In such case observables can call [weak self] closures properly.
     }
@@ -1162,7 +1162,7 @@ public class BleClientManager : NSObject {
                                      promise: SafePromise) {
         let disposable = descriptorObservable
             .flatMap { descriptor -> Observable<Descriptor> in
-                if descriptor.uuid.isEqual(BleClientManager.cccdUUID) {
+                if descriptor.uuid.isEqual(BleClientManagerFork.cccdUUID) {
                     return Observable.error(BleError.descriptorWriteNotAllowed(descriptor.uuid.fullUUIDString))
                 }
                 return descriptor.writeValue(value)

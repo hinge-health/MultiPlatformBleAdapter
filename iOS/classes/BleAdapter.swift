@@ -4,7 +4,7 @@ import Foundation
 
     // MARK: - Properties
 
-    var delegate: BleClientManagerDelegate? { get set }
+    var delegate: BleClientManagerForkDelegate? { get set }
 
     // MARK: - Initializers
 
@@ -225,4 +225,4 @@ import Foundation
                          reject: @escaping Reject)
 }
 
-extension BleClientManager: BleAdapter { }
+extension BleClientManagerFork: BleAdapter { }

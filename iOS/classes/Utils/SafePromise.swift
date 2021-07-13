@@ -1,6 +1,6 @@
 //
 //  SafePromise.swift
-//  BleClientManager
+//  BleClientManagerFork
 //
 //  Created by Przemysław Lenart on 25/10/16.
 //  Copyright © 2016 Polidea. All rights reserved.
